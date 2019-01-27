@@ -40,11 +40,21 @@ namespace Лабораторнаробота1
         }
         static void Main(string[] args)
         {
+            Console.Write("Введiть кiлькiсть елементiв масиву :");
             int N = Convert.ToInt32(Console.ReadLine());
             int[] array = ArrayRandom(N);
+            int sum = 0;
             Console.WriteLine("Ваш масив :" + string.Join(" ", array));
             array = ArraySort(array);
             Console.WriteLine("Сортирований масив :" + string.Join(" ", array));
+            for(int i=0;i< N; i++)
+            {
+                if (array[i] % 2 != 0)
+                {
+                    sum += array[i];
+                }
+            }
+            Console.WriteLine("Сума непарних елементiв :{0}",sum);
             Console.ReadKey();
         }
     }
