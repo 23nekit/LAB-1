@@ -7,22 +7,24 @@ namespace Лабораторнаробота1
 {
     class Program
     {
-        static int[] ArraySort(int[] array)
+        static void ArraySort(int[] array)
         {
-            int t;
-            for(int i = 1; i < array.Length; i++)
+            int i;
+            int step = array.Length / 2;
+            while (step > 0)
             {
-                for(int j = array.Length - 1; j > 0; j--)
+                for (i = 0; i < (array.Length - step); i++)
                 {
-                    if (array[j] < array[j - 1])
+                    while ((i >= 0) && (array[i] > array[i + step]))
                     {
-                        t = array[j];
-                        array[j] = array[j - 1];
-                        array[j - 1] = t;
+                        int t = array[i];
+                        array[i] = array[i + step];
+                        array[i + step] = t;
+                        i -= step;
                     }
                 }
+                step = step / 2;
             }
-            return array;
         }
         static int[] ArrayRandom(int n)
         {
@@ -45,7 +47,7 @@ namespace Лабораторнаробота1
             int[] array = ArrayRandom(N);
             int sum = 0;
             Console.WriteLine("Ваш масив :" + string.Join(" ", array));
-            array = ArraySort(array);
+            ArraySort(array);
             Console.WriteLine("Сортирований масив :" + string.Join(" ", array));
             for(int i=0;i< N; i++)
             {
